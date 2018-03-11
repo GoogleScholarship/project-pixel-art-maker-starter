@@ -8,7 +8,8 @@ let button = $("input[type='submit']");
 // When size is submitted by the user, call makeGrid()
 
 function makeGrid() {
-  let col = $('#inputHeight').val();
+ $('table tr').remove(); 
+ let col = $('#inputHeight').val();
   let row = $('#inputWeight')[0].value; 
 console.log(col, row);
   for(let i = 0; col > i; i++){
