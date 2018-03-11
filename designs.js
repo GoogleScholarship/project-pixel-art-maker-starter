@@ -2,20 +2,13 @@ $(function() {
 // Select color input
 let color = $('#colorPicker').val();
 // Select size input
-
 let table = $('#pixelCanvas');
 let button = $("input[type='submit']");
 // When size is submitted by the user, call makeGrid()
-
 function makeGrid() {
  $('table tr').remove(); 
  let col = $('#inputHeight').val();
-console.log($('#inputWeight').value); 
-console.log($('#inputWeight')[0]); 
-console.log($('#inputWeight')[0].value); 
-
  let row = $('#inputWeight')[0].value; 
- console.log(col, row);
   for(let i = 0; col > i; i++){
     table.append('<tr></tr>');
     for(let y = 0; row > y; y++){
