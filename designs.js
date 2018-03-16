@@ -20,19 +20,16 @@ function makeGrid() {
 	console.log($(this));
 
     let color = $("input[type='color']#colorPicker").val();
-    $(this).attr("bgcolor", color)
+ 
+	console.log("step 1", color)
+	console.log("step 2", $(this)[0].outerHTML)
+	console.log("step 3", '<td bgcolor="#ffffff"></td>')
+	console.log("step 4", '<td bgcolor="'+color+'"></td>')
 	
-    console.log($(this)["0"].outerHTML)
-	console.log($(this)["0"].outerHTML)
-      if($(this).outerHTML == '<td bgcolor="#ffffff"></td>'){
-      
-	 $(this).attr("bgcolor", color) // this line == to line below 
-      	 $(this)["0"].outerHTML = '<td bgcolor="#ffffff"></td>'// this line is == to line above
-      
-	}
-      else{
-       $(this).outerHTML = '<td bgcolor="#ffffff"></td>'
-       }
+      if($(this)[0].outerHTML == '<td bgcolor="'+color+'"></td>'){
+       $(this)[0].outerHTML = '<td bgcolor="#ffffff"></td>'
+      }
+	 $(this).attr("bgcolor", color); 
   });
 }
 button.click(function(event) {
