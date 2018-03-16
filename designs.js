@@ -17,8 +17,22 @@ function makeGrid() {
   }
   table.on("click", "td", 
   function() {
+	console.log($(this));
+
     let color = $("input[type='color']#colorPicker").val();
-    $(this).attr("bgcolor", color);
+    $(this).attr("bgcolor", color)
+	
+    console.log($(this)["0"].outerHTML)
+	console.log($(this)["0"].outerHTML)
+      if($(this).outerHTML == '<td bgcolor="#ffffff"></td>'){
+      
+	 $(this).attr("bgcolor", color) // this line == to line below 
+      	 $(this)["0"].outerHTML = '<td bgcolor="#ffffff"></td>'// this line is == to line above
+      
+	}
+      else{
+       $(this).outerHTML = '<td bgcolor="#ffffff"></td>'
+       }
   });
 }
 button.click(function(event) {
