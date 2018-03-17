@@ -5,7 +5,7 @@ let button = $("input[type='submit']");
 let clicked = false;
 // When size is submitted by the user, call makeGrid()
 function makeGrid() {
- $('table tr').remove(); 
+$("#pixel_canvas tr").remove();
  let col = $('#inputHeight').val();
  let row = $('#inputWeight')[0].value; 
   for(let i = 0; col > i; i++){
@@ -17,22 +17,26 @@ function makeGrid() {
 
    function reached(cell) {
      let color = $("input[type='color']#colorPicker").val();
-       if(cell[0].outerHTML == '<td bgcolor="'+color+'"></td>'){
-        cell[0].outerHTML = '<td bgcolor="#ffffff"></td>'
-       }
   	 cell.attr("bgcolor", color); 
-   } 
+   }
+
+table.on("click", "td", function(){
+     let color = $("input[type='color']#colorPicker").val();
+console.log('the frog has leftthe castle. :O ')
+	console.log($(this)[0].outerHTML)
+       if($(this)[0].outerHTML == '<td bgcolor="'+color+'"></td>'){
+          $(this)[0].outerHTML = '<td bgcolor="#ffffff"></td>'
+       }
+      reached(cell);
+   clicked = false;
+  }) 
 
    
 
   table.on("mousedown", "td", function(){
     cell=$(this)
 // set true/false    
-   clicked = true;
-   console.log("cliced is reached" + clicked);   
-    if(clicked === true){
-      reached(cell);
-    }
+clicked = true;
   })
   .on("mouseover", "td", function() {
 	console.log("reached")    
@@ -47,7 +51,7 @@ cell=$(this)
 $(document).on('mouseup', function(){
    console.log("mouse up ");
   clicked = false;
-	console.log(clicked)
+	console.log("reached mouseup number");
 	
 });
 
