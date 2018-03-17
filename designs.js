@@ -1,11 +1,13 @@
 $(function() {
 // Select size input
 let table = $('#pixelCanvas');
+console.log('table 1', table)
 let button = $("input[type='submit']");
 let clicked = false;
 // When size is submitted by the user, call makeGrid()
 function makeGrid() {
-$("#pixel_canvas tr").remove();
+table[0].innerHTML = ""
+console.log('table 2', table)
  let col = $('#inputHeight').val();
  let row = $('#inputWeight')[0].value; 
   for(let i = 0; col > i; i++){
@@ -61,8 +63,8 @@ $(document).on('mouseup', function(){
 }
 
 button.click(function(event) {
-  event.preventDefault();
   makeGrid();
+  event.preventDefault();
 });
 }(jQuery));
 
