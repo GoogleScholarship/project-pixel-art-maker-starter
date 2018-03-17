@@ -15,51 +15,54 @@ $("#pixel_canvas tr").remove();
     }    
   }
 
-   function reached(cell) {
+  function reached(cell) {
      let color = $("input[type='color']#colorPicker").val();
-  	 cell.attr("bgcolor", color); 
+  	 cell.attr("bgcolor", color);
    }
 
 table.on("click", "td", function(){
-     let color = $("input[type='color']#colorPicker").val();
-console.log('the frog has leftthe castle. :O ')
-	console.log($(this)[0].outerHTML)
-       if($(this)[0].outerHTML == '<td bgcolor="'+color+'"></td>'){
-          $(this)[0].outerHTML = '<td bgcolor="#ffffff"></td>'
-       }
-      reached(cell);
+        //console.log('the frog has leftthe castle. :O ')
+	//console.log($(this)[0].outerHTML)
    clicked = false;
   }) 
 
    
 
   table.on("mousedown", "td", function(){
+     let color = $("input[type='color']#colorPicker").val();
     cell=$(this)
-// set true/false    
+       if($(this)[0].outerHTML == '<td bgcolor="'+color+'"></td>'){
+          $(this)[0].outerHTML = '<td bgcolor="#ffffff"></td>'
+	clicked = false
+       }
+	else {
+      reached(cell);
 clicked = true;
+	}
+    console.log("mousedown");
+// set true/false    
   })
   .on("mouseover", "td", function() {
-	console.log("reached")    
+//	console.log("reached")    
 cell=$(this)
 // if true
-	console.log(clicked)
+//	console.log(clicked)
     if(clicked == true){
       reached(cell);
     }
   })
 
 $(document).on('mouseup', function(){
-   console.log("mouse up ");
+  // console.log("mouse up ");
   clicked = false;
-	console.log("reached mouseup number");
-	
+//	console.log("reached mouseup number");
 });
 
 }
 
 button.click(function(event) {
   event.preventDefault();
-  makeGrid();  
+  makeGrid();
 });
 }(jQuery));
 
