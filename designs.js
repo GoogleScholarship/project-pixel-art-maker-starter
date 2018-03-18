@@ -60,5 +60,6 @@ $(function() {
     event.preventDefault();
   });
 
+  makeGrid();
 }(jQuery));
 
